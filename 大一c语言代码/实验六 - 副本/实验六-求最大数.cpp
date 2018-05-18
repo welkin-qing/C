@@ -1,0 +1,55 @@
+#include<stdio.h>
+int max(int x)
+{
+	int ge,shi,bai,qian,t,a;
+	ge=x%10;
+	shi=x/10%10;
+    bai=x/100%10;
+	qian=x/1000;
+	if(qian<ge)
+	{
+       t=ge;
+	   ge=qian;
+	   qian=t;
+	}
+	if(qian<shi)
+	{
+		t=shi;
+		shi=qian;
+		qian=t;
+	}
+	if(qian<bai)
+	{
+		t=bai;
+		bai=qian;
+		qian=t;
+	}
+	if(bai<ge)
+	{
+		t=ge;
+		ge=bai;
+		bai=t;
+	}
+	if(bai<shi)
+	{
+		t=shi;
+		shi=bai;
+		bai=t;
+	}
+	if(shi<ge)
+	{
+		t=ge;
+		ge=shi;
+		shi=t;
+	}
+	a=qian*1000+bai*100+shi*10+ge;
+	return(a);
+}
+main()
+{
+	int x,m;
+	printf("请输入一个四位数");
+	scanf("%d",&x);
+	m=max(x);
+	printf("%d\n",m);
+}

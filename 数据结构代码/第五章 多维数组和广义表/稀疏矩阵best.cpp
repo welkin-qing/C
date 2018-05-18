@@ -1,0 +1,159 @@
+#include<stdio.h> 
+#include<stdlib.h>
+typedef struct triple{
+	int row,col,value;
+}tri;
+tri a[100],b[100],c[200];
+int main()
+{
+	int wx,wy,m,n,i,j,k;
+	scanf("%d%d%d",&wx,&wy,&m);
+	getchar();
+	for(i=0;i<m;i++)
+       scanf("(%d,%d,%d)",&a[i].row,&a[i].col,&a[i].value);    
+	scanf("%d%d%d",&wx,&wy,&n);
+	getchar();
+	for(i=0;i<n;i++)
+	   scanf("(%d,%d,%d)",&b[i].row, &b[i].col,&b[i].value);  
+	  //ÊäÈë 
+	i=0,j=0,k=0;
+	while(i<m&&j<n)
+	{	
+		if(a[i].row<b[j].row)
+		{
+			c[k].row=a[i].row;
+			c[k].col=a[i].col;
+			c[k++].value=a[i].value;
+			i++;
+		}
+		else if(a[i].row>b[j].row)
+		{
+			c[k].row=b[j].row;
+			c[k].col=b[j].col;
+			c[k++].value=b[j].value;
+			j++;
+		}
+		else
+		{
+			if(a[i].col<b[j].col)
+			{
+				c[k].row=a[i].row;
+				c[k].col=a[i].col;
+				c[k++].value=a[i].value;
+				i++;
+			}
+			else if(a[i].col>b[j].col)
+			{
+				c[k].row=b[j].row;
+				c[k].col=b[j].col;
+				c[k++].value=b[j].value;
+				j++;
+			}
+			else
+			{
+				if(a[i].value+b[j].value==0)
+				{
+					i++;j++;
+				}
+				else
+				{
+					c[k].row=b[j].row;
+					c[k].col=b[j].col;
+					c[k++].value=a[i].value+b[j].value;
+					i++;j++;
+				}
+			}
+			
+		}  
+	}
+    if(i<m)
+       while(i<m)
+       {
+       	 	c[k].row=a[i].row;
+			c[k].col=a[i].col;
+			c[k++].value=a[i].value;
+			i++;
+	   }
+	 if(j<n)
+       while(j<n)
+       {      	
+       	    c[k].row=b[j].row;
+			c[k].col=b[j].col;
+			c[k++].value=b[j].value;
+			j++;
+	   }   
+	printf("%d %d %d\n",wx,wy,k);
+	 for(i=0;i<k;i++)
+	    printf("(%d,%d,%d)",c[i].row,c[i].col,c[i].value);
+	printf("\n");
+	//¼õ 
+	i=0,j=0,k=0;
+	while(i<m&&j<n)
+	{	
+		if(a[i].row<b[j].row)
+		{
+			c[k].row=a[i].row;
+			c[k].col=a[i].col;
+			c[k++].value=a[i].value;
+			i++;
+		}
+		else if(a[i].row>b[j].row)
+		{
+			c[k].row=b[j].row;
+			c[k].col=b[j].col;
+			c[k++].value=0-b[j].value;
+			j++;
+		}
+		else
+		{
+			if(a[i].col<b[j].col)
+			{
+				c[k].row=a[i].row;
+				c[k].col=a[i].col;
+				c[k++].value=a[i].value;
+				i++;
+			}
+			else if(a[i].col>b[j].col)
+			{
+				c[k].row=b[j].row;
+				c[k].col=b[j].col;
+				c[k++].value=0-b[j].value;
+				j++;
+			}
+			else
+			{
+				if(a[i].value-b[j].value==0)
+				{
+					i++;j++;
+				}
+				else
+				{
+					c[k].row=b[j].row;
+					c[k].col=b[j].col;
+					c[k++].value=a[i].value-b[j].value;
+					i++;j++;
+				}
+			}
+			
+		}  
+	}
+    if(i<m)
+       while(i<m)
+       {
+       	 	c[k].row=a[i].row;
+			c[k].col=a[i].col;
+			c[k++].value=a[i].value;
+			i++;
+	   }
+	 if(j<n)
+       while(j<n)
+       {      	
+       	    c[k].row=b[j].row;
+			c[k].col=b[j].col;
+			c[k++].value=0-b[j].value;
+			j++;
+	   }   
+	printf("%d %d %d\n",wx,wy,k);
+	 for(i=0;i<k;i++)
+	    printf("(%d,%d,%d)",c[i].row,c[i].col,c[i].value);
+}

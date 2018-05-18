@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<string.h>
+main()
+ {
+ 	char a[3][20];
+ 	char b[20],c[20],d[20];
+ 	int i,j;
+ 	printf("ÇëÊäÈë×Ö·û´®\n");
+ 	for(i=0;i<3;i++)
+ 	{
+ 		gets(a[i]);
+	}
+	printf("Êä³ö¸Ã×Ö·û´®\n");
+	for(i=0;i<3;i++)
+ 	{
+ 		puts(a[i]);
+	} 
+	if(strcmp(a[1],a[2])==1)
+	{
+		strcpy(b,a[1]);
+		strcpy(a[1],a[2]);
+		strcpy(a[2],b);	
+	}
+	if(strcmp(a[1],a[3])==1)
+	{
+		strcpy(c,a[1]);
+		strcpy(a[1],a[3]);
+		strcpy(a[3],c);	
+	}
+	if(strcmp(a[2],a[3])==1)
+	{
+		strcpy(d,a[2]);
+		strcpy(a[2],a[3]);
+		strcpy(a[3],d);	
+	}
+	printf("Êä³öÅÅĞòºóµÄ×Ö·û´®\n");
+		for(i=0;i<3;i++)
+ 	{
+ 		puts(a[i]);
+	} 
+ }

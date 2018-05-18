@@ -1,0 +1,67 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+typedef struct node
+{
+	int data;
+	char ;
+	double ;
+	
+
+	struct node  * next;
+}node;
+
+node * create(int a[],int n );
+node * reverse(node *p);
+int main(void)
+{
+	int a[] = {7,8,0,4,5,6};
+	node *p = create(a,sizeof(a)/sizeof(int));
+	p = reverse(p);
+	return 0;
+}
+
+node * create(int a[],int n )
+{
+	if(a == NULL || n <= 0 )
+	{
+		return NULL;
+	}
+	node * head = NULL , *newnode;
+	int i;
+	for(i = 0 ; i < n ; ++i)
+	{
+		newwnode = (node *)malloc(sizeof(node));
+		newnode -> data = a[i];
+		//newnode -> next = NULL;
+
+		newnode -> next = head;
+		head = newnode ;
+	}
+	newwnode = (node *)malloc(sizeof(node));
+	newnode -> next = head;
+	return newnode;
+}
+node * reverse(node *p)
+{
+	nede * head = NULL;
+	node * newnode;
+	while(p)
+	{
+		newnode = p;
+		p = p->next;
+		newnode->next = NULL;	
+		
+
+	}
+	return head;
+}
+	
+
+
+
+
+
+
+
+
